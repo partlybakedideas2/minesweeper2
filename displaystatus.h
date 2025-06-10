@@ -1,0 +1,6 @@
+#ifndef DISPLAYSTATUS_H
+#define DISPLAYSTATUS_H
+
+enum DisplayStatus {HIDDEN, FLAGGED, REVEALED};
+
+#endif // DISPLAYSTATUS_H
