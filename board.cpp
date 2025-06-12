@@ -7,6 +7,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <algorithm>
+#include <iostream>
 
 
 Board::Board() {}
@@ -51,8 +52,8 @@ GameStatus Board::getGameStatus() const
 }
 void Board::clickTile(const Point& p, bool rightClicked)
 {
+    std::cout << "signal received from row: " << p.row << " col: " << p.col << "\n";
     Tile& t = *board.at(p.row).at(p.col);
-
     // normal (left) click actions:
     if (!rightClicked) {
         // left-clicking a flagged tile does nothing
@@ -66,7 +67,7 @@ void Board::clickTile(const Point& p, bool rightClicked)
                 t.setStatus(REVEALED);
                 // after the first click, bombs are placed on the board:
                 if (tilesRevealed == 0) {
-                     placeBombs(p);
+                    placeBombs(p);
                 }
                 tilesRevealed++; // Increment this to track game progress
                 // if the tile has 0 surrounding bombs, all surrounding
@@ -74,7 +75,9 @@ void Board::clickTile(const Point& p, bool rightClicked)
                 if (t.getNumber() == 0) {
                     std::vector<Point> neighbours = getNeighbours(p);
                     for (Point &n : neighbours) {
-                        clickTile(n, false);
+                        if (board.at(n.row).at(n.col)->getStatus() != REVEALED) {
+                            clickTile(n, false);
+                        }
                     }
                 }
             }
@@ -92,6 +95,7 @@ void Board::clickTile(const Point& p, bool rightClicked)
 
 void Board::placeBombs(const Point& p)
 {
+    std::cout << "placebombs called\n";
     srand(time(NULL));
 
     for (int i = 0; i < 10 * (level * level) / 64;
@@ -128,7 +132,7 @@ std::vector<Point> Board::getNeighbours(const Point& p) const
                 continue;
             }
             if (i >= 0 && i < level && j >= 0 && j < level) {
-                neighbours.emplace_back(Point(i, j));
+                neighbours.emplace_back(i, j);
             }
         }
     }

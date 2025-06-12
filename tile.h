@@ -21,7 +21,7 @@ public:
     void setStatus(const DisplayStatus& s);
     DisplayStatus getStatus() const;
 
-    void writeTile() const;
+    void writeTile();
 
 signals:
     void tileClicked(const Point& p, bool rightClicked);

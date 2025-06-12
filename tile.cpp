@@ -1,5 +1,6 @@
 #include "tile.h"
 #include "displaystatus.h"
+#include <iostream>
 
 Tile::Tile(const int& r, const int& c, QWidget* parent = nullptr)
     : QPushButton(parent)
@@ -10,11 +11,12 @@ Tile::Tile(const int& r, const int& c, QWidget* parent = nullptr)
 
     position.row = r;
     position.col = c;
+
+    std::cout << "row: " << r << " col: " << c << "\n";
 }
 
 void Tile::incrNumber() {
     number++;
-    this->writeTile();
 }
 int Tile::getNumber() const{
     return number;
@@ -36,20 +38,24 @@ DisplayStatus Tile::getStatus() const{
     return status;
 }
 
-void Tile::writeTile() const{
+void Tile::writeTile() {
     if(status == REVEALED) {
         this->setDisabled(true);
-        this->setText("number");
+        if (number != 0) {
+            this->setText(QString::number(number));
+        }
     }
     else if(status == FLAGGED) {
         this->setText("F");
     }
-    else if(bomb) {
-        this->setText("B");
+    else if(status == HIDDEN) {
+        this->setText("");
     }
 }
 
 void Tile::mousePressEvent(QMouseEvent* event) {
+    std::cout << "signal sent from row: " << position.row << " col: " << position.col << "\n";
+
     if (event->button() == Qt::LeftButton) {
         emit tileClicked(position, false);
     }
