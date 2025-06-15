@@ -1,10 +1,10 @@
-#include "minesweeper2.h"
-#include "./ui_minesweeper2.h"
+#include "mainwindow.h"
+#include "./ui_mainwindow.h"
 #include "board.h"
 
-Minesweeper2::Minesweeper2(QWidget *parent)
+MainWindow::MainWindow(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::Minesweeper2)
+    , ui(new Ui::MainWindow)
 {
     ui->setupUi(this); // This sets up any elements defined in the .ui file
 
@@ -15,7 +15,7 @@ Minesweeper2::Minesweeper2(QWidget *parent)
     setLayout(layout); // Set the layout for the Minesweeper2 window
 }
 
-Minesweeper2::~Minesweeper2()
+MainWindow::~MainWindow()
 {
     delete ui;
 }

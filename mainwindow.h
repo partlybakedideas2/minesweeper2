@@ -5,19 +5,19 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class Minesweeper2;
+class MainWindow;
 }
 QT_END_NAMESPACE
 
-class Minesweeper2 : public QWidget
+class MainWindow : public QWidget
 {
     Q_OBJECT
 
 public:
-    Minesweeper2(QWidget *parent = nullptr);
-    ~Minesweeper2();
+    MainWindow(QWidget *parent = nullptr);
+    ~MainWindow();
 
 private:
-    Ui::Minesweeper2 *ui;
+    Ui::MainWindow *ui;
 };
 #endif // MINESWEEPER2_H

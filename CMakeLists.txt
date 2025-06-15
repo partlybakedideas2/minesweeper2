@@ -14,9 +14,9 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
-        minesweeper2.cpp
-        minesweeper2.h
-        minesweeper2.ui
+        mainwindow.cpp
+        mainwindow.h
+        mainwindow.ui
         displaystatus.h
         gamelevel.h
         gamestatus.h
