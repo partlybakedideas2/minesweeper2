@@ -31,7 +31,14 @@ Board::Board(const GameLevel& l, QWidget* parent)
         break;
     }
 
+    grid->setSpacing(0);
+
+    // to implement flags
+    // QPixmap pixmap("Minesweeeper1/minesweeper2/flagIcon.png");
+    // QIcon flagIcon(pixmap);
+
     for (int r = 0; r < level; r++) {
+        grid->setRowMinimumHeight(r, 60);
         for (int c = 0; c < level; c++) {
             board.at(r).at(c) = new Tile(r, c, this);
             QObject::connect(board.at(r).at(c), SIGNAL(tileClicked(Point,bool)), this, SLOT(clickTile(Point,bool)));
@@ -87,8 +94,11 @@ void Board::clickTile(const Point& p, bool rightClicked)
     else {
         if (t.getStatus() != FLAGGED) {
             t.setStatus(FLAGGED);
+            //t.setIcon(flagIcon);
+            //t.setIconSize(QSize(50, 50));
         } else {
             t.setStatus(HIDDEN);
+            //t.setIcon(QIcon());
         }
     }
 }

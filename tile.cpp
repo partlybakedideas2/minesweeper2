@@ -1,6 +1,11 @@
 #include "tile.h"
 #include "displaystatus.h"
 #include <iostream>
+#include <QApplication>
+#include <QPixmap>
+#include <QIcon>
+#include <QSize>
+
 
 Tile::Tile(const int& r, const int& c, QWidget* parent = nullptr)
     : QPushButton(parent)
@@ -12,11 +17,32 @@ Tile::Tile(const int& r, const int& c, QWidget* parent = nullptr)
     position.row = r;
     position.col = c;
 
+    this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+
     std::cout << "row: " << r << " col: " << c << "\n";
+
 }
 
 void Tile::incrNumber() {
     number++;
+    if (number == 1) {
+        this->setStyleSheet("Tile {color: blue;}");
+    } else if (number == 2) {
+        this->setStyleSheet("Tile {color: green;}");
+    } else if (number == 3) {
+        this->setStyleSheet("Tile {color: red;}");
+    } else if (number == 4) {
+        this->setStyleSheet("Tile {color: purple;}");
+    } else if (number == 5) {
+        this->setStyleSheet("Tile {color: orange;}");
+    } else if (number == 6) {
+        this->setStyleSheet("Tile {color: cyan;}");
+    } else if (number == 7) {
+        this->setStyleSheet("Tile {color: black;}");
+    } else {
+        this->setStyleSheet("Tile {color: yellow;}");
+    }
 }
 int Tile::getNumber() const{
     return number;
