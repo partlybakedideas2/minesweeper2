@@ -23,6 +23,10 @@ public:
 
     void writeTile();
 
+public slots:
+    void on_gameLost();
+    void on_gameWon();
+
 signals:
     void tileClicked(const Point& p, bool rightClicked);
 

@@ -8,7 +8,11 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this); // This sets up any elements defined in the .ui file
 
-    board b = new Board(EASY, ui->boardParentWidget);
+    QTimer* timer = new QTimer(this);
+    Board* b = new Board(EASY, ui->boardParentWidget);
+
+    QObject::connect()
+
 }
 
 MainWindow::~MainWindow()

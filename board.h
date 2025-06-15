@@ -3,7 +3,6 @@
 
 #include <vector>
 #include "tile.h"
-#include "gamestatus.h"
 #include "gamelevel.h"
 #include "point.h"
 #include <QGridLayout>
@@ -17,11 +16,12 @@ public:
     Board();
     Board(const GameLevel& l, QWidget* parent);
 
-    GameStatus getGameStatus() const;
+    void getGameStatus();
 
 signals:
     void gameWon();
     void gameLost();
+    void gameStarted();
 
 public slots:
     void clickTile(const Point& p, bool rightClicked);

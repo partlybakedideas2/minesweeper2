@@ -41,12 +41,14 @@ Board::Board(const GameLevel& l, QWidget* parent)
         for (int c = 0; c < level; c++) {
             board.at(r).at(c) = new Tile(r, c, this);
             QObject::connect(board.at(r).at(c), SIGNAL(tileClicked(Point,bool)), this, SLOT(clickTile(Point,bool)));
+            QObject::connect(this, SIGNAL(gameWon()), board.at(r).at(c), SLOT(on_gameWon()));
+            QObject::connect(this, SIGNAL(gameLost()), board.at(r).at(c), SLOT(on_gameLost()));
             grid->addWidget(board.at(r).at(c), r, c);
         }
     }
 }
 
-void Board::getGameStatus() const
+void Board::getGameStatus()
 {
     if (tilesRevealed == -1) {
         emit gameLost();
@@ -57,7 +59,9 @@ void Board::getGameStatus() const
 }
 void Board::clickTile(const Point& p, bool rightClicked)
 {
-    std::cout << "signal received from row: " << p.row << " col: " << p.col << "\n";
+    if (tilesRevealed == 0) { //Emits gameStarted() to begin timer on 1st click
+        emit gameStarted();
+    }
     Tile& t = *board.at(p.row).at(p.col);
     // normal (left) click actions:
     if (!rightClicked) {
@@ -99,6 +103,7 @@ void Board::clickTile(const Point& p, bool rightClicked)
             //t.setIcon(QIcon());
         }
     }
+    this->getGameStatus();//checks if game has been won or lost; emits signal accordingly.
 }
 
 void Board::placeBombs(const Point& p)

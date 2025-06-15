@@ -79,6 +79,26 @@ void Tile::writeTile() {
     }
 }
 
+void Tile::on_gameLost()
+{
+    this -> setText("");
+    this -> setDisabled(true);
+    if (bomb) {
+        this->setStyleSheet("background-color: red;");
+    }
+}
+
+void Tile::on_gameWon()
+{
+    this -> setText("");
+    if (bomb) {
+        this->setStyleSheet("background-color: green;");
+    }
+    else {
+        this->setStyleSheet("backgroud-color: rgb(25, 178, 255);");
+    }
+}
+
 void Tile::mousePressEvent(QMouseEvent* event) {
     std::cout << "signal sent from row: " << position.row << " col: " << position.col << "\n";
 
