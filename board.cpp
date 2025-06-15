@@ -1,7 +1,6 @@
 #include "board.h"
 #include "tile.h"
 #include "gamelevel.h"
-#include "gamestatus.h"
 #include "point.h"
 #include <vector>
 #include <ctime>
@@ -47,15 +46,14 @@ Board::Board(const GameLevel& l, QWidget* parent)
     }
 }
 
-GameStatus Board::getGameStatus() const
+void Board::getGameStatus() const
 {
     if (tilesRevealed == -1) {
-        return LOSE;
+        emit gameLost();
     }
-    if (tilesRevealed == (level * level) - (10 * (level * level) / 64)) {
-        return WIN;
+    else if (tilesRevealed == (level * level) - (10 * (level * level) / 64)) {
+        emit gameWon();
     }
-    return CONTINUE;
 }
 void Board::clickTile(const Point& p, bool rightClicked)
 {

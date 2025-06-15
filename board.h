@@ -19,6 +19,10 @@ public:
 
     GameStatus getGameStatus() const;
 
+signals:
+    void gameWon();
+    void gameLost();
+
 public slots:
     void clickTile(const Point& p, bool rightClicked);
 

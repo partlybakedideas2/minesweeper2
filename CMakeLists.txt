@@ -19,7 +19,6 @@ set(PROJECT_SOURCES
         mainwindow.ui
         displaystatus.h
         gamelevel.h
-        gamestatus.h
         board.h
         board.cpp
         tile.h
