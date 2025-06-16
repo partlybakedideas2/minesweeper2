@@ -8,10 +8,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this); // This sets up any elements defined in the .ui file
 
-    QTimer* timer = new QTimer(this);
     Board* b = new Board(EASY, ui->boardParentWidget);
 
-    QObject::connect()
+    QObject::connect(b, SIGNAL(gameStarted()), ui->stopwatchLcd, SLOT(startClock()));
 
 }
 

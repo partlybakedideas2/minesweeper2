@@ -43,7 +43,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLCDNumber" name="timerLcd"/>
+         <widget class="LcdStopwatch" name="stopwatchLcd"/>
         </item>
         <item>
          <widget class="QProgressBar" name="progressBar">
@@ -102,6 +102,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LcdStopwatch</class>
+   <extends>QLCDNumber</extends>
+   <header>lcdstopwatch.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
