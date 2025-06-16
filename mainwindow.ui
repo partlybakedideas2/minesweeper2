@@ -106,7 +106,7 @@
   <customwidget>
    <class>LcdStopwatch</class>
    <extends>QLCDNumber</extends>
-   <header>lcdstopwatch.h</header>
+   <header>C:\Users\mcphe\OneDrive\Desktop\Projects\Code\Qt Practice\Minesweeper 2\minesweeper2\lcdstopwatch.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

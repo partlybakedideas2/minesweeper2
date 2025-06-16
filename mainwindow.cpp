@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent)
     Board* b = new Board(EASY, ui->boardParentWidget);
 
     QObject::connect(b, SIGNAL(gameStarted()), ui->stopwatchLcd, SLOT(startClock()));
+    QObject::connect(b, SIGNAL(gameLost()), ui->stopwatchLcd, SLOT(stopClock()));
+    QObject::connect(b, SIGNAL(gameWon()), ui->stopwatchLcd, SLOT(stopClock()));
 
 }
 

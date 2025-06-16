@@ -4,7 +4,7 @@
 #include <QLCDNumber>
 #include <QTimer>
 
-class LcdStopwatch : QLCDNumber
+class LcdStopwatch : public QLCDNumber
 {
     Q_OBJECT
 public:
