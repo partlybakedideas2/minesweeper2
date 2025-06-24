@@ -15,6 +15,7 @@ Our version of the game has three levels:
 - [Replit IDE](https://replit.com/~),
 - [Qt Creator](https://Qt.io),
 - [this excellent tutorial](https://jpgrady28.azurewebsites.net/Home/Docs/183) by Jonathan Grady on using Git inside of Qt
+- [This flag icon](<a href="https://www.flaticon.com/free-icons/red-flag" title="red flag icons">Red flag icons created by Alfredo Hernandez - Flaticon</a>) created by Alfredo Hernandez and available for free with attribution.
 
 
 Enjoy our Game! :smile:

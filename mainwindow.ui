@@ -15,19 +15,18 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
-    <widget class="QWidget" name="boardParentWidget" native="true">
-     <property name="minimumSize">
-      <size>
-       <width>400</width>
-       <height>400</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item>
     <layout class="QVBoxLayout" name="sideBarLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SizeConstraint::SetMaximumSize</enum>
+     </property>
      <item>
       <widget class="QFrame" name="statusFrame">
+       <property name="maximumSize">
+        <size>
+         <width>200</width>
+         <height>16777215</height>
+        </size>
+       </property>
        <property name="frameShape">
         <enum>QFrame::Shape::StyledPanel</enum>
        </property>
@@ -36,14 +35,14 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QLabel" name="usernameLabel">
-          <property name="text">
-           <string>TextLabel</string>
-          </property>
-         </widget>
+         <widget class="LcdStopwatch" name="stopwatchLcd"/>
         </item>
         <item>
-         <widget class="LcdStopwatch" name="stopwatchLcd"/>
+         <widget class="QLabel" name="usernameLabel">
+          <property name="text">
+           <string>Progress bar (not functional)</string>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QProgressBar" name="progressBar">
@@ -57,13 +56,25 @@
      </item>
      <item>
       <widget class="QGroupBox" name="leadeboardGroupBox">
+       <property name="maximumSize">
+        <size>
+         <width>200</width>
+         <height>16777215</height>
+        </size>
+       </property>
        <property name="title">
-        <string>Leaderboard</string>
+        <string>Leaderboard (Not functional)</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QFrame" name="newBoardFrame">
+       <property name="maximumSize">
+        <size>
+         <width>200</width>
+         <height>16777215</height>
+        </size>
+       </property>
        <property name="frameShape">
         <enum>QFrame::Shape::StyledPanel</enum>
        </property>
@@ -71,9 +82,6 @@
         <enum>QFrame::Shadow::Raised</enum>
        </property>
        <layout class="QGridLayout" name="gridLayout">
-        <item row="0" column="0">
-         <widget class="QDial" name="levelSelectDial"/>
-        </item>
         <item row="0" column="1">
          <widget class="QLineEdit" name="usernameLineEdit">
           <property name="placeholderText">
@@ -91,7 +99,20 @@
         <item row="2" column="0">
          <widget class="QLabel" name="levelSelectLabel">
           <property name="text">
-           <string>TextLabel</string>
+           <string>EASY</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QDial" name="levelSelectDial">
+          <property name="minimum">
+           <number>0</number>
+          </property>
+          <property name="maximum">
+           <number>30</number>
           </property>
          </widget>
         </item>

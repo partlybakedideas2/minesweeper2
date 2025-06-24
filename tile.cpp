@@ -17,11 +17,8 @@ Tile::Tile(const int& r, const int& c, QWidget* parent = nullptr)
     position.row = r;
     position.col = c;
 
-    this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-
-
-    std::cout << "row: " << r << " col: " << c << "\n";
-
+    this->setMaximumSize(50,50);
+    this->setMinimumSize(50,50);
 }
 
 void Tile::incrNumber() {
@@ -72,11 +69,16 @@ void Tile::writeTile() {
         }
     }
     else if(status == FLAGGED) {
-        this->setText("F");
+        QPixmap pixmap(":/Assests/red-flag.png");
+        QIcon flagIcon(pixmap);
+
+        this->setIcon(flagIcon);
+        this->setIconSize(QSize(40, 40));
     }
     else if(status == HIDDEN) {
-        this->setText("");
+        this->setIcon(QIcon());
     }
+
 }
 
 void Tile::on_gameLost()
@@ -94,13 +96,9 @@ void Tile::on_gameWon()
     if (bomb) {
         this->setStyleSheet("background-color: green;");
     }
-    else {
-        this->setStyleSheet("backgroud-color: rgb(25, 178, 255);");
-    }
 }
 
 void Tile::mousePressEvent(QMouseEvent* event) {
-    std::cout << "signal sent from row: " << position.row << " col: " << position.col << "\n";
 
     if (event->button() == Qt::LeftButton) {
         emit tileClicked(position, false);

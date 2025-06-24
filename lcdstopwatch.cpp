@@ -9,7 +9,7 @@ LcdStopwatch::LcdStopwatch(QWidget* parent)
     QObject::connect(timer, SIGNAL(timeout()), this, SLOT(update()));
 
     this->setSmallDecimalPoint(true);
-    this->setDigitCount(4);
+    this->setDigitCount(5);
 }
 
 void LcdStopwatch::startClock()
@@ -27,4 +27,5 @@ void LcdStopwatch::update()
     elapsedSeconds += 0.1;
     this->display(elapsedSeconds);
 }
+
 

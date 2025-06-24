@@ -3,6 +3,7 @@
 
 #include <QLCDNumber>
 #include <QTimer>
+#include <string>
 
 class LcdStopwatch : public QLCDNumber
 {

@@ -14,6 +14,7 @@ Board::Board(const GameLevel& l, QWidget* parent)
     : QWidget(parent)
 
 {
+    std::cout << "constructor called\n";
     level = l;
 
     QGridLayout* grid = new QGridLayout(this);
@@ -30,11 +31,10 @@ Board::Board(const GameLevel& l, QWidget* parent)
         break;
     }
 
-    grid->setSpacing(0);
+    this->setMaximumSize(50*level,50*level);
+    this->setMinimumSize(50*level,50*level);
 
-    // to implement flags
-    // QPixmap pixmap("Minesweeeper1/minesweeper2/flagIcon.png");
-    // QIcon flagIcon(pixmap);
+    grid->setSpacing(0);
 
     for (int r = 0; r < level; r++) {
         grid->setRowMinimumHeight(r, 60);
@@ -57,6 +57,7 @@ void Board::getGameStatus()
         emit gameWon();
     }
 }
+
 void Board::clickTile(const Point& p, bool rightClicked)
 {
     if (tilesRevealed == 0) { //Emits gameStarted() to begin timer on 1st click
